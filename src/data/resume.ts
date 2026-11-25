@@ -17,9 +17,9 @@ export const profile = {
 }
 
 export const highlights: { icon: IconName; label: string; value: string }[] = [
-  { icon: 'ai', label: 'Focus', value: 'AI-powered products' },
-  { icon: 'product', label: 'Approach', value: 'Fullstack delivery' },
-  { icon: 'target', label: 'Open to', value: 'Full-time SE roles' },
+  { icon: 'ai', label: 'Focus', value: 'AI-powered products, Mobile Development' },
+  { icon: 'product', label: 'Approach', value: 'Web,Mobile,Desktop Applications, AI Agentic Automation' },
+  { icon: 'target', label: 'Open to', value: 'Full-time/Contract Software Engineer, Fullstack Developer, Front-End Engineer' },
   { icon: 'pin', label: 'Based in', value: 'Rawang, Malaysia' },
 ]
 
@@ -42,6 +42,22 @@ export type ExperienceItem = {
 }
 
 export const experience: ExperienceItem[] = [
+  {
+    title: 'Final Year Project — SmartClinic: Mobile Clinic Management System',
+    org: 'University of Malaysia Sarawak (UNIMAS)',
+    period: 'Oct 2025 – May 2026',
+    highlight: 'Final Year Project',
+    icon: 'system',
+    bullets: [
+      'Designed and developed SmartClinic, a mobile clinic management system for small private clinics in Malaysia, replacing paper-based and disconnected workflows that caused inefficiency and medical errors.',
+      'Built the Android app with React Native (Expo) and TypeScript, using JWT authentication and role-based access for Patient, Doctor and Clinic Staff users.',
+      'Developed a RESTful JSON API with Python Flask, Gunicorn and Docker, connected to Microsoft SQL Server on Azure.',
+      'Implemented appointment booking with real-time conflict detection, patient registration, medical history, digital prescriptions, in-app notifications, and automated billing with SST calculation.',
+      'Integrated Reyna, Violet and Balmond—role-specific AI assistants for patients, doctors and staff—using the Anthropic Claude API (Claude Haiku 4.5), plus staff reporting for clinic analytics.',
+      'Followed the Waterfall methodology and passed 29/29 unit tests across 7 modules and 12/12 integration tests across 6 scenarios.',
+      'Ran user acceptance testing with 50 respondents, achieving an overall satisfaction score of 6.38/7.00.',
+    ],
+  },
   {
     title: 'Personal Expenses Manager (PEM)',
     org: 'Self project',
@@ -118,6 +134,12 @@ export const projects: {
   stack: string[]
   icon: IconName
 }[] = [
+  {
+    name: 'SmartClinic',
+    blurb: 'Mobile clinic management for Malaysian private clinics, with appointments, billing, prescriptions, and role-specific AI assistants.',
+    stack: ['React Native', 'TypeScript', 'Flask', 'Azure SQL'],
+    icon: 'system',
+  },
   {
     name: 'Siswa-Rent',
     blurb: 'Natural-language student rental search (BM/EN) with Gemini scoring and live listing enrichment.',

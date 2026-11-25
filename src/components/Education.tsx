@@ -1,4 +1,4 @@
-import fypArt from '../assets/fyp.svg'
+import fypArt from '../assets/fyp.jpg'
 import { education, reference } from '../data/resume'
 import { Icon } from './Icon'
 import { Reveal, Stagger, StaggerItem } from './Reveal'

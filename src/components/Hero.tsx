@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import graduateArt from '../assets/graduate.svg'
+import graduatePhoto from '../assets/graduate.jpg'
 import { profile } from '../data/resume'
 import { Icon } from './Icon'
 
@@ -8,9 +8,6 @@ const ease = [0.22, 1, 0.36, 1] as const
 export function Hero() {
   return (
     <section className="hero" id="top" aria-label="Introduction">
-      <div className="hero__atmosphere" aria-hidden="true" />
-      <div className="hero__grid" aria-hidden="true" />
-
       <div className="hero__content">
         <motion.p
           className="hero__role"
@@ -58,6 +55,17 @@ export function Hero() {
         </motion.div>
       </div>
 
+      <div className="hero__visual">
+        <motion.div
+          className="hero__portrait"
+          initial={{ opacity: 0, x: 30, scale: 0.96 }}
+          animate={{ opacity: 1, x: 0, scale: 1 }}
+          transition={{ duration: 0.65, ease, delay: 0.35 }}
+        >
+          <img src={graduatePhoto} alt="Meor Hazrul at his graduation" />
+        </motion.div>
+      </div>
+
       <motion.a
         href="#about"
         className="hero__scroll"
@@ -69,10 +77,6 @@ export function Hero() {
         <span className="hero__scroll-line" />
         Scroll
       </motion.a>
-
-      <div className="hero__artwork">
-        <img src={graduateArt} alt="Graduate student illustration" />
-      </div>
     </section>
   )
 }
