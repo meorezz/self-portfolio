@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion'
+import graduateArt from '../assets/graduate.svg'
 import { profile } from '../data/resume'
+import { Icon } from './Icon'
 
 const ease = [0.22, 1, 0.36, 1] as const
 
@@ -16,6 +18,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45, ease, delay: 0.15 }}
         >
+          <Icon name="fire" className="icon icon--sm" />
           {profile.role}
         </motion.p>
 
@@ -46,6 +49,9 @@ export function Hero() {
           <a className="btn btn--primary" href="#experience">
             View experience
           </a>
+          <a className="btn btn--ghost" href={profile.cvPath} download>
+            Download CV
+          </a>
           <a className="btn btn--ghost" href={profile.github} target="_blank" rel="noreferrer">
             GitHub
           </a>
@@ -63,6 +69,10 @@ export function Hero() {
         <span className="hero__scroll-line" />
         Scroll
       </motion.a>
+
+      <div className="hero__artwork">
+        <img src={graduateArt} alt="Graduate student illustration" />
+      </div>
     </section>
   )
 }

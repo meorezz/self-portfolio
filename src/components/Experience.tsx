@@ -1,4 +1,5 @@
 import { experience } from '../data/resume'
+import { Icon } from './Icon'
 import { Reveal, Stagger, StaggerItem } from './Reveal'
 
 export function Experience() {
@@ -13,7 +14,11 @@ export function Experience() {
         <Stagger className="timeline" as="ul">
           {experience.map((item) => (
             <StaggerItem key={`${item.org}-${item.period}`} as="li" className="timeline__item">
-              <div className="timeline__rail" aria-hidden="true" />
+              <div className="timeline__rail" aria-hidden="true">
+                <span className="timeline__mark">
+                  <Icon name={item.icon} className="icon icon--sm" />
+                </span>
+              </div>
               <div className="timeline__body">
                 <div className="timeline__head">
                   <div>
@@ -24,7 +29,10 @@ export function Experience() {
                     {item.highlight && (
                       <span className="badge">{item.highlight}</span>
                     )}
-                    <time className="timeline__period">{item.period}</time>
+                    <time className="timeline__period">
+                      <Icon name="time" className="icon icon--xs" />
+                      {item.period}
+                    </time>
                   </div>
                 </div>
                 <ul className="timeline__bullets">

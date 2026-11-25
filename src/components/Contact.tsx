@@ -1,9 +1,43 @@
 import { profile } from '../data/resume'
+import type { IconName } from './Icon'
+import { Icon } from './Icon'
 import { Reveal } from './Reveal'
+import gmailIcon from '../assets/google-gmail-svgrepo-com.svg'
+import githubIcon from '../assets/github-svgrepo-com.svg'
+import linkedinIcon from '../assets/linkedin-svgrepo-com.svg'
+
+const links: { href: string; label: string; value: string; icon?: IconName; iconSrc?: string; external?: boolean }[] = [
+  {
+    href: `mailto:${profile.email}`,
+    label: 'Email',
+    value: profile.email,
+    iconSrc: gmailIcon,
+  },
+  {
+    href: profile.linkedin,
+    label: 'LinkedIn',
+    value: 'meor-hazrul',
+    iconSrc: linkedinIcon,
+    external: true,
+  },
+  {
+    href: profile.github,
+    label: 'GitHub',
+    value: '@meorezz',
+    iconSrc: githubIcon,
+    external: true,
+  },
+  {
+    href: `tel:${profile.phone.replace(/\D/g, '')}`,
+    label: 'Phone',
+    value: profile.phone,
+    icon: 'collab',
+  },
+]
 
 export function Contact() {
   return (
-    <section className="section" id="contact">
+    <section className="section section--tint" id="contact">
       <div className="section__inner contact">
         <Reveal>
           <p className="eyebrow">Contact</p>
@@ -13,33 +47,36 @@ export function Contact() {
           </p>
         </Reveal>
 
-        <Reveal delay={0.08} className="contact__links">
-          <a className="contact__link" href={`mailto:${profile.email}`}>
-            <span>Email</span>
-            <strong>{profile.email}</strong>
-          </a>
-          <a
-            className="contact__link"
-            href={profile.linkedin}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <span>LinkedIn</span>
-            <strong>meor-hazrul</strong>
-          </a>
-          <a
-            className="contact__link"
-            href={profile.github}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <span>GitHub</span>
-            <strong>@meorezz</strong>
-          </a>
-          <a className="contact__link" href={`tel:${profile.phone.replace(/\D/g, '')}`}>
-            <span>Phone</span>
-            <strong>{profile.phone}</strong>
-          </a>
+        <Reveal delay={0.08} className="contact__place">
+          <Icon name="pin" className="icon" />
+          <div>
+            <span className="about__label">Location</span>
+            <p>{profile.location}</p>
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.1} className="contact__links">
+          {links.map((link) => (
+            <a
+              key={link.label}
+              className="contact__link"
+              href={link.href}
+              target={link.external ? '_blank' : undefined}
+              rel={link.external ? 'noreferrer' : undefined}
+            >
+              <span className="icon-wrap" aria-hidden="true">
+                {link.iconSrc ? (
+                  <img className="contact__brand-icon" src={link.iconSrc} alt="" />
+                ) : link.icon ? (
+                  <Icon name={link.icon} />
+                ) : null}
+              </span>
+              <span>
+                <span>{link.label}</span>
+                <strong>{link.value}</strong>
+              </span>
+            </a>
+          ))}
         </Reveal>
       </div>
     </section>
